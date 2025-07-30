@@ -672,3 +672,491 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
   }
 }
+
+// === FULLPAGE LAYOUT STYLES ===
+
+// Page container
+.page-container {
+  background: $background-white-smoke;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header fisso
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+  background-color: $background-white-smoke;
+  margin: 0 auto;
+  padding-top: 24px;
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 16px 24px;
+    max-width: 800px;
+    background: $core-white;
+    border-radius: $rounded-lg;
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.10);
+
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .chat-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid $grey-200;
+    border-radius: $rounded-base;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: $grey-100;
+      border-color: $grey-300;
+    }
+    
+    .chat-icon {
+      font-size: 16px;
+    }
+    
+    .chat-text {
+      font-size: 14px;
+      color: $core-black;
+    }
+  }
+}
+
+// Contenuto principale scrollabile
+.main-content-scrollable {
+  margin-top: 124px; // Spazio per header fisso
+  padding-bottom: 80px; // Spazio per footer fisso
+  padding: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: calc(100vh - 160px);
+  background: $core-white;
+  border-radius: $rounded-lg;
+}
+
+// Stepper
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  padding: 0 16px;
+  
+  .stepper-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+    
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: $grey-200;
+      z-index: -1;
+    }
+    
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: $grey-200;
+      color: $grey-400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    
+    .step-label {
+      font-size: 12px;
+      color: $grey-400;
+      text-align: center;
+      max-width: 80px;
+      line-height: 1.2;
+    }
+    
+    &.active {
+      .step-number {
+        background: $blue-500;
+        color: $core-white;
+      }
+      
+      .step-label {
+        color: $blue-500;
+        font-weight: 600;
+      }
+      
+      &:not(:last-child)::after {
+        background: $blue-500;
+      }
+    }
+  }
+}
+
+// Form container
+.form-container {
+  background: $core-white;
+  border-radius: $rounded-lg;
+  
+  .form-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: $core-black;
+  }
+}
+
+// Form grid
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-single-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: $core-black;
+  }
+  
+  input {
+    padding: 12px 16px;
+    border: 1px solid $grey-200;
+    border-radius: $rounded-base;
+    font-size: 16px;
+    transition: border-color 0.2s;
+    
+    &:focus {
+      outline: none;
+      border-color: $blue-500;
+    }
+    
+    &::placeholder {
+      color: $grey-400;
+    }
+  }
+}
+
+// Footer fisso
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $background-white-smoke;
+  z-index: 1000;
+  padding-bottom: 24px;
+  margin: 0 auto;
+  border-radius: $rounded-lg;
+  
+  .footer-content {
+    border-top: 1px solid $grey-100;
+
+    background-color: $core-white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    max-width: 800px;
+
+  }
+  
+  .btn-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid $grey-200;
+    border-radius: $rounded-base;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: $core-black;
+    font-size: 16px;
+    
+    &:hover {
+      background: $grey-100;
+      border-color: $grey-300;
+    }
+  }
+  
+  .btn-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: $blue-500;
+    border: none;
+    border-radius: $rounded-base;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: $core-white;
+    font-size: 16px;
+    font-weight: 600;
+    
+    &:hover {
+      background: $blue-600;
+    }
+  }
+}
+
+// Chat sidebar
+.chat-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100vh;
+  background: $core-white;
+  border-left: 1px solid $grey-100;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  
+  &.active {
+    right: 0;
+  }
+  
+  @media (max-width: 768px) {
+    width: 100vw;
+    right: -100vw;
+  }
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid $grey-100;
+  
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .chat-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: $grey-400;
+    
+    &:hover {
+      color: $core-black;
+    }
+  }
+}
+
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-section {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: $core-black;
+  }
+}
+
+.help-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.help-item {
+  padding: 16px;
+  border: 1px solid $grey-200;
+  border-radius: $rounded-base;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    border-color: $blue-500;
+    background: $blue-50;
+  }
+  
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: $core-black;
+  }
+  
+  p {
+    font-size: 12px;
+    color: $grey-500;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+.chat-input-section {
+  padding: 20px 24px;
+  border-top: 1px solid $grey-100;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  
+  .chat-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid $grey-200;
+    border-radius: $rounded-base;
+    font-size: 14px;
+    
+    &:focus {
+      outline: none;
+      border-color: $blue-500;
+    }
+  }
+  
+  .chat-input-actions {
+    display: flex;
+    gap: 8px;
+    
+    button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: $rounded-base;
+      
+      &:hover {
+        background: $grey-100;
+      }
+      
+      &.chat-send {
+        background: $blue-500;
+        color: $core-white;
+        
+        &:hover {
+          background: $blue-600;
+        }
+      }
+    }
+  }
+}
+
+.chat-tabs {
+  display: flex;
+  gap: 2px;
+  background: $grey-100;
+  border-radius: $rounded-lg;
+  padding: 2px;
+  
+  .chat-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: $core-white;
+    border: none;
+    border-radius: $rounded-md;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    
+    &.active {
+      background: $blue-500;
+      color: $core-white;
+    }
+    
+    &:not(.active) {
+      background: transparent;
+      color: $grey-500;
+      
+      &:hover {
+        background: $grey-200;
+      }
+    }
+  }
+}
+
+// Chat overlay
+.chat-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 1500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
